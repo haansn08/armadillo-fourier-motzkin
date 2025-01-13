@@ -25,7 +25,7 @@ vec fourier_motzkin (const mat& A, const double tol=1e-6, const double the_best_
 
 	mat smaller_A (carries.n_elem+lower_bounds.n_elem*upper_bounds.n_elem, A.n_cols);
 	smaller_A.head_rows(carries.n_elem) = A.rows(carries);
-	uword i = 0;
+	uword i = carries.n_elem;
 	for (uword l : lower_bounds) for (uword u : upper_bounds)
 		smaller_A.row(i++) = A.row(l)/a(l) - A.row(u)/a(u);
 	smaller_A.shed_col(smaller_A.n_cols-1); //remove last column which is zero now
